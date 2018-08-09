@@ -55,14 +55,14 @@ public class PlayerController {
 
     @PostMapping
     public String create(@Valid @ModelAttribute Player player, BindingResult bindingResult) { // ②
-        if(bindingResult.hasErrors()) return "players/new"; // ③
+        if (bindingResult.hasErrors()) return "players/new"; // ③
         playerService.save(player);
         return "redirect:/players";
     }
 
     @PutMapping("{id}")
     public String update(@PathVariable Long id, @Valid @ModelAttribute Player player, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) return "players/edit";
+        if (bindingResult.hasErrors()) return "players/edit";
         player.setId(id);
         playerService.save(player);
         return "redirect:/players";
